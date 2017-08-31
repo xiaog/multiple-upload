@@ -1,0 +1,32 @@
+{
+  "name": "mutiple-upload",
+  "version": "0.1.0",
+  "description": "a pure javascript client for multiple upload ",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npm run test",
+    "build": "browserify ./index.js -t [ babelify ] -s upload -d | exorcist ./dist/upload.js.map | derequire > dist/upload.js"
+  },
+  "keywords": [
+    "javascript",
+    "client",
+    "multiple",
+    "upload"
+  ],
+  "author": "cangbing.guo@upai.com",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^4.1.5",
+    "babel-preset-es2015": "^6.1.18",
+    "babelify": "^7.3.0",
+    "browserify": "^12.0.0"
+  },
+  "dependencies": {
+    "base62": "^1.2.0"
+  }
+}
