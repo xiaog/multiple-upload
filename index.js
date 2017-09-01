@@ -1,5 +1,5 @@
 /* global window */
-import Upload from './upload';
+import Upload from './lib/upload';
 
 const {defaultOptions} = Upload;
 
