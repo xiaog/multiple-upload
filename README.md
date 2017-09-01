@@ -1,5 +1,5 @@
 # multiple-upload
-A pure JavaScript client for upyun server multiple upload
+A pure JavaScript client for upyun server multiple upload，inspired by [tus](http://tus.io)
 
 ## Example
 
@@ -30,3 +30,24 @@ var upload = new multiple.Upload(file, options);
 
 upload.start();
 ```
+
+## Installation
+
+The sources are compiled into [UMD](https://github.com/umdjs/umd)
+(`dist/multiple.js`) which can be loaded using different approaches:
+* **Embed using a script tag:** `<script src="dist/multiple.js"></script>` and access
+* **Install from NPM:** `npm install git@github.com:xiaog/multiple-upload.git --save`:
+`var multiple = require("multiple")`
+* **Define using AMD:** `define("alpha", ["dist/multiple.js"], function(multiple) {})`
+
+## Explanation
+
+The project just supported upyun resume for break point when upload large files 
+and just supported [upyun upload protocol](http://docs.upyun.com/api/rest_api/#_3)
+
+## Base Usage
+
+## Feature
+
+* Support resume chunk when network occur error
+* Support node's environment
