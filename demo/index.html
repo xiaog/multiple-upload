@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo</title>
+
+	<script src="../dist/multiple.js"></script>
+	<style>
+		input,
+		a#submit {
+			display: block;
+			margin: 10px;
+			height: 40px;
+		}
+
+		#submit {
+			width: 100px;
+			background: #02a3c6;
+			border: none;
+			color: #fff;
+			line-height: 40px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		#submit:hover {
+			background: #09f;
+		}
+
+		#log {
+			border: 2px solid #f8f8f8;
+		}
+
+		#log ul {
+			list-style: none;
+			font: 14px;
+			line-height: 1.5;
+			color: #666;
+		}
+
+		#log ul li strong {
+			display: inline-block;
+			min-width: 100px;
+			color: #39b3d7;
+		}
+
+
+
+	</style>
+
+</head>
+<body>
+
+<form action="">
+	<input type="file" name="file" id="file">
+	<a id="submit">UPLOAD</a>
+</form>
+
+<div id="log">
+
+</div>
+
+
+<script>
+	document.getElementById('submit').onclick = function() {
+		var options = {
+			endpoint: 'http://localhost:4001/videos/upload/3206/',
+			chunkSize: 1048576,
+			headers: {
+				Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoieXBoZWxwIiwiYnVja2V0IjoieXBoZWxwIiwic3RhdGUiOiJhOGMzODVkZGE3YTJhM2RkZTg1ZjA1YWFmMTE4MTIxYiIsImlhdCI6MTUwNDIzNDM4NX0.-XUS-de_by4Sk23Z_93uKtQt8EC1iBvBW1zG2u9F6k0'
+			},
+			onError: function(error) {
+        console.log("Failed because: " + error)
+      },
+      onProgress: function(bytesUploaded, bytesTotal) {
+        var percentage = (bytesUploaded / bytesTotal * 100).toFixed(2)
+        console.log(bytesUploaded, bytesTotal, percentage + "%")
+      },
+      onSuccess: function() {
+      	console.log("Download %s from %s", instance.file.name, instance.url)
+			},
+			onCompletePostData: {
+				name: 'test',
+				description: 'description'
+			}
+		};
+		var file = document.getElementById('file').files[0];
+		var instance = new multiple.Upload(file, options);
+
+		instance.start();
+	};
+
+</script>
+</body>
+</html>
